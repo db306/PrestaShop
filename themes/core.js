@@ -42,14 +42,14 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(1);
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -71,17 +71,17 @@
 	
 	__webpack_require__(11);
 	
-	__webpack_require__(12);
+	__webpack_require__(13);
 	
 	var _prestashop = __webpack_require__(4);
 	
 	var _prestashop2 = _interopRequireDefault(_prestashop);
 	
-	var _events = __webpack_require__(13);
+	var _events = __webpack_require__(14);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _common = __webpack_require__(14);
+	var _common = __webpack_require__(12);
 	
 	// "inherit" EventEmitter
 	window.$ = _jquery2['default'];
@@ -95,9 +95,9 @@
 	  (0, _common.psShowHide)();
 	});
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	 * jQuery JavaScript Library v2.2.4
@@ -1674,9 +1674,9 @@
 	// and CommonJS for browser emulators (#13566)
 	if(!noGlobal){window.jQuery = window.$ = jQuery;}return jQuery;}); // Otherwise append directly
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -1827,15 +1827,15 @@
 	  });
 	});
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = prestashop;
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -1922,9 +1922,9 @@
 	  }
 	});
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -1981,9 +1981,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -2061,9 +2061,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -2221,9 +2221,9 @@
 	
 	module.exports = exports['default'];
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -2295,9 +2295,9 @@
 	    });
 	});
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -2344,9 +2344,9 @@
 	  });
 	});
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * 2007-2017 PrestaShop
@@ -2384,6 +2384,8 @@
 	
 	var _prestashop2 = _interopRequireDefault(_prestashop);
 	
+	var _common = __webpack_require__(12);
+	
 	(0, _jquery2['default'])(document).ready(function () {
 	  (0, _jquery2['default'])('body').on('change', '.product-variants [data-product-attribute]', function () {
 	    (0, _jquery2['default'])("input[name$='refresh']").click();
@@ -2398,7 +2400,14 @@
 	      eventType = extraParameters.eventType;
 	    }
 	
-	    var query = (0, _jquery2['default'])(event.target.form).serialize() + '&ajax=1&action=productrefresh';
+	    var preview = (0, _common.psGetRequestParameter)('preview');
+	    if (preview !== null) {
+	      preview = '&preview=' + preview;
+	    } else {
+	      preview = '';
+	    }
+	
+	    var query = (0, _jquery2['default'])(event.target.form).serialize() + '&ajax=1&action=productrefresh' + preview;
 	    var actionURL = (0, _jquery2['default'])(event.target.form).attr('action');
 	
 	    _jquery2['default'].post(actionURL, query, null, 'json').then(function (resp) {
@@ -2496,9 +2505,74 @@
 	  });
 	});
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
+
+	/**
+	 * 2007-2017 PrestaShop
+	 *
+	 * NOTICE OF LICENSE
+	 *
+	 * This source file is subject to the Open Software License (OSL 3.0)
+	 * that is bundled with this package in the file LICENSE.txt.
+	 * It is also available through the world-wide-web at this URL:
+	 * https://opensource.org/licenses/OSL-3.0
+	 * If you did not receive a copy of the license and are unable to
+	 * obtain it through the world-wide-web, please send an email
+	 * to license@prestashop.com so we can send you a copy immediately.
+	 *
+	 * DISCLAIMER
+	 *
+	 * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+	 * versions in the future. If you wish to customize PrestaShop for your
+	 * needs please refer to http://www.prestashop.com for more information.
+	 *
+	 * @author    PrestaShop SA <contact@prestashop.com>
+	 * @copyright 2007-2017 PrestaShop SA
+	 * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
+	 * International Registered Trademark & Property of PrestaShop SA
+	 */
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports.psShowHide = psShowHide;
+	exports.psGetRequestParameter = psGetRequestParameter;
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	var _jquery = __webpack_require__(2);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function psShowHide() {
+	  (0, _jquery2['default'])('.ps-shown-by-js').show();
+	  (0, _jquery2['default'])('.ps-hidden-by-js').hide();
+	}
+	
+	/**
+	 * This function returns the value of the requested parameter from the URL
+	 * @param {string} paramName - the name of the requested parameter
+	 * @returns {string|null}
+	 */
+	
+	function psGetRequestParameter(paramName) {
+	  var vars = {};
+	  window.location.href.replace(location.hash, '').replace(/[?&]+([^=&]+)=?([^&]*)?/gi, function (m, key, value) {
+	    vars[key] = value !== undefined ? value : '';
+	  });
+	  if (paramName) {
+	    return vars[paramName] ? vars[paramName] : null;
+	  }
+	
+	  return vars;
+	}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -2556,9 +2630,9 @@
 	  });
 	});
 
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
 	//
@@ -2828,52 +2902,6 @@
 	  return arg === void 0;
 	}
 
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * 2007-2017 PrestaShop
-	 *
-	 * NOTICE OF LICENSE
-	 *
-	 * This source file is subject to the Open Software License (OSL 3.0)
-	 * that is bundled with this package in the file LICENSE.txt.
-	 * It is also available through the world-wide-web at this URL:
-	 * https://opensource.org/licenses/OSL-3.0
-	 * If you did not receive a copy of the license and are unable to
-	 * obtain it through the world-wide-web, please send an email
-	 * to license@prestashop.com so we can send you a copy immediately.
-	 *
-	 * DISCLAIMER
-	 *
-	 * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
-	 * versions in the future. If you wish to customize PrestaShop for your
-	 * needs please refer to http://www.prestashop.com for more information.
-	 *
-	 * @author    PrestaShop SA <contact@prestashop.com>
-	 * @copyright 2007-2017 PrestaShop SA
-	 * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
-	 * International Registered Trademark & Property of PrestaShop SA
-	 */
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports.psShowHide = psShowHide;
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	var _jquery = __webpack_require__(2);
-	
-	var _jquery2 = _interopRequireDefault(_jquery);
-	
-	function psShowHide() {
-	  (0, _jquery2['default'])('.ps-shown-by-js').show();
-	  (0, _jquery2['default'])('.ps-hidden-by-js').hide();
-	}
-
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=core.js.map
