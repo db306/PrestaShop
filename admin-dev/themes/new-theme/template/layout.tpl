@@ -57,7 +57,7 @@
     </span>
     *}
   </nav>
-  {hook h='displayBackOfficeTop'}
+  {if isset($displayBackOfficeTop)}{$displayBackOfficeTop}{/if}
 </header>
 
 {include file='components/layout/nav_bar.tpl'}
