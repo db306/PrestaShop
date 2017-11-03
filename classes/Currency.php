@@ -490,12 +490,12 @@ class CurrencyCore extends ObjectModel
      * @param int  $idModule Module ID
      * @param null $idShop   Shop ID
      *
-     * @return array|bool|false|mysqli_result|null|PDOStatement|resource
+     * @return array|null|PDOStatement|resource
      */
     public static function checkPaymentCurrencies($idModule, $idShop = null)
     {
         if (empty($idModule)) {
-            return false;
+            return array();
         }
 
         if (is_null($idShop)) {
@@ -508,7 +508,8 @@ class CurrencyCore extends ObjectModel
         $sql->where('mc.`id_module` = '.(int) $idModule);
         $sql->where('mc.`id_shop` = '.(int) $idShop);
 
-        return Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
+        $currencies = Db::getInstance(_PS_USE_SQL_SLAVE_)->executeS($sql);
+        return $currencies ? $currencies : array();
     }
 
     /**
