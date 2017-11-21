@@ -28,11 +28,15 @@
       <div class="mb-2">
         <form class="search-form" @submit.prevent>
           <label>{{trans('product_search')}}</label>
-          <PSTags ref="psTags" :tags="tags" @tagChange="onSearch" />
-          <PSButton @click="onClick" class="search-button" :primary="true">
-            <i class="material-icons">search</i>
-            {{trans('button_search')}}
-          </PSButton>
+          <div class="input-group">
+            <PSTags ref="psTags" :tags="tags" @tagChange="onSearch" />
+            <span class="input-group-btn">
+              <PSButton @click="onClick" class="search-button" :primary="true">
+                <i class="material-icons">search</i>
+                {{trans('button_search')}}
+              </PSButton>
+            </span>
+          </div>
         </form>
       </div>
       <Filters @applyFilter="applyFilter"/>
@@ -117,17 +121,6 @@
     .alert-box {
       padding-top: 28px;
       z-index: -1;
-    }
-    .search-form {
-      width: calc(100% - 130px);
-      .search-button {
-        float: right;
-        position: absolute;
-        right: 22px;
-        top: 1px;
-        margin-top: 28px;
-        height: 35px;
-      }
     }
     .fade-enter-active, .fade-leave-active {
       transition: opacity .5s;
