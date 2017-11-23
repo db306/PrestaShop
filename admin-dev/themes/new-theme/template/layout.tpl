@@ -9,8 +9,8 @@
 {if $collapse_menu} page-sidebar-closed{/if}
 *}
 
-<header>
-  <nav class="main-header">
+<header id="header">
+  <nav id="header_infos" class="main-header">
 
     {* TODO: BUTTON USED FOR THE MOBILE VERSION TO REACTIVATE *}
     {* TODO: TO REPLACE
