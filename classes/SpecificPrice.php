@@ -493,6 +493,11 @@ class SpecificPriceCore extends ObjectModel
         return Configuration::updateValue('PS_SPECIFIC_PRICE_PRIORITIES', rtrim($value, ';'));
     }
 
+    /**
+     * Truncate the specific price priorities
+     * 
+     * @return boolean
+     */
     public static function deletePriorities()
     {
         return Db::getInstance()->execute('
@@ -604,6 +609,13 @@ class SpecificPriceCore extends ObjectModel
         return $ids_product;
     }
 
+    /**
+     * Delete a product from its id
+     * 
+     * @param  int $id_product
+     * 
+     * @return boolean
+     */
     public static function deleteByProductId($id_product)
     {
         if (Db::getInstance()->execute('DELETE FROM `'._DB_PREFIX_.'specific_price` WHERE `id_product` = '.(int)$id_product)) {
@@ -614,6 +626,13 @@ class SpecificPriceCore extends ObjectModel
         return false;
     }
 
+    /**
+     * Duplicate a product
+     * 
+     * @param  boolean|int $id_product The product ID to duplicate, false when duplicating the current product
+     * 
+     * @return boolean
+     */
     public function duplicate($id_product = false)
     {
         if ($id_product) {
