@@ -59,8 +59,6 @@ twig:
         '%kernel.root_dir%/../src/PrestaShopBundle/Resources/views/Admin/TwigTemplateForm': Twig
     globals:
         webpack_server:   false
-    paths:
-        '%admin_page%/Configure/AdvancedParameters': AdvancedParameters
 
 # Doctrine Configuration
 doctrine:
