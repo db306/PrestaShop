@@ -2001,6 +2001,8 @@ class AdminControllerCore extends Controller
                 $tabs[$index]['href'] = $tabs[$index]['sub_tabs'][0]['href'];
             } elseif (0 == $tabs[$index]['id_parent'] && '' == $tabs[$index]['icon']) {
                 unset($tabs[$index]);
+            } else if (empty($tabs[$index]['icon'])) {
+                $tabs[$index]['icon'] = 'extension';
             }
 
             if (array_key_exists($index, $tabs) && array_key_exists('sub_tabs', $tabs[$index])) {
