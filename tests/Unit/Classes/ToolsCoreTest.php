@@ -331,4 +331,21 @@ class ToolsCoreTest extends TestCase
         $_POST = array();
         $_GET = array();
     }
+
+    /**
+     * @dataProvider testStrReplaceFirstProvider
+     */
+    public function testStrReplaceFirst($search, $replace, $subject, $cur, $expected) {
+        $this->assertEquals($expected, Tools::StrReplaceFirst($search, $replace, $subject, $cur));
+    }
+
+    public function testStrReplaceFirstProvider() {
+        return [
+            ['s', 'f', 'seed', 0, 'feed'],
+            ['s', 'f', 'seed', 1, 'seed'],
+            ['e', 'o', 'feed', 0, 'foed'],
+            ['e', 'o', 'feed', 1, 'foed'],
+            ['e', 'o', 'feed', 2, 'feod'],
+        ];
+    }
 }
