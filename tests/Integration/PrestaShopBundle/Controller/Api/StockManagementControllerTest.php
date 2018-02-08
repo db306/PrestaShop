@@ -168,7 +168,7 @@ class StockManagementControllerTest extends ApiTestCase
             ),
             array(
                 array('productId' => 1, 'category_id' => array(4, 5), 'page_index' => 1, 'page_size' => 1),
-                $expectedTotalPages = 6
+                $expectedTotalPages = 8
             )
         );
     }
@@ -330,8 +330,8 @@ class StockManagementControllerTest extends ApiTestCase
         $this->assertProductQuantity(
             array(
                 'available_quantity' => 10,
-                'physical_quantity' => 12,
-                'reserved_quantity' => 2
+                'physical_quantity' => 10,
+                'reserved_quantity' => 0
             ),
             $content
         );
@@ -343,8 +343,8 @@ class StockManagementControllerTest extends ApiTestCase
         $this->assertProductQuantity(
             array(
                 'available_quantity' => 6,
-                'physical_quantity' => 8,
-                'reserved_quantity' => 2
+                'physical_quantity' => 6,
+                'reserved_quantity' => 0
             ),
             $content
         );
@@ -360,13 +360,13 @@ class StockManagementControllerTest extends ApiTestCase
     private function assertProductQuantity($expectedQuantities, $content)
     {
         $this->assertEquals($expectedQuantities['available_quantity'], $content['product_available_quantity'],
-            'The response body should contain the newly updated physical quantity.'
+            'The response body should contain the newly updated available quantity.'
         );
         $this->assertEquals($expectedQuantities['physical_quantity'], $content['product_physical_quantity'],
-            'The response body should contain the newly updated quantity.'
+            'The response body should contain the newly updated physical quantity.'
         );
         $this->assertEquals($expectedQuantities['reserved_quantity'], $content['product_reserved_quantity'],
-            'The response body should contain the newly updated physical quantity.'
+            'The response body should contain the newly updated reserved quantity.'
         );
     }
 
@@ -405,8 +405,8 @@ class StockManagementControllerTest extends ApiTestCase
         $this->assertProductQuantity(
             array(
                 'available_quantity' => 10,
-                'physical_quantity' => 12,
-                'reserved_quantity' => 2
+                'physical_quantity' => 10,
+                'reserved_quantity' => 0
             ),
             $content[1]
         );
@@ -421,8 +421,8 @@ class StockManagementControllerTest extends ApiTestCase
         $this->assertProductQuantity(
             array(
                 'available_quantity' => 10,
-                'physical_quantity' => 12,
-                'reserved_quantity' => 2
+                'physical_quantity' => 10,
+                'reserved_quantity' => 0
             ),
             $content[1]
         );
