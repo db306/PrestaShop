@@ -358,6 +358,9 @@ class ContextCore
     }
 
     /**
+     * Returns a new instance of Translator for the provided locale code
+     *
+     * @param string $locale 5-letter iso code
      *
      * @return Translator
      */
