@@ -378,7 +378,7 @@ class CommonClient {
   }
 
   /**
-   * This function checks the result of the search
+   * This function checks the search result
    * @param selector
    * @param data
    * @param pos
