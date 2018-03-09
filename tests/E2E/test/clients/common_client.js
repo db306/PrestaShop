@@ -395,6 +395,20 @@ class CommonClient {
       })
     }
   }
+
+  /**
+   * This function checks the search result
+   * @param selector editor body selector
+   * @param content
+   * @returns {*}
+   */
+  setContentToEditor(selector, content) {
+    return this.client
+      .click(selector)
+      .execute(function (content) {
+        return (tinyMCE.activeEditor.setContent(content));
+      }, content)
+  }
 }
 
 module.exports = CommonClient;
