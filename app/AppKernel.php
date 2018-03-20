@@ -65,9 +65,9 @@ class AppKernel extends Kernel
         }
 
         if (extension_loaded('apc')) {
-            $_SERVER['SYMFONY__CACHE__DRIVER'] = 'apc';
+            $_SERVER['CACHE_DRIVER'] = 'apc';
         } else {
-            $_SERVER['SYMFONY__CACHE__DRIVER'] = 'array';
+            $_SERVER['CACHE_DRIVER'] = 'array';
         }
 
         return $bundles;
