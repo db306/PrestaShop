@@ -41,11 +41,11 @@
         <span class="form-control-label" data-action="reduce"><i class="material-icons">expand_less</i>{{ "Collapse"|trans({}, 'Admin.Actions') }}</span>
         <hr class="category-hr"/>
       </div>
-      {{ form_widget(form.categories, {'defaultCategory': true}) }} {# see bootstrap_3_layout.html.twig #}
+      {{ form_widget(form.categories, {'defaultCategory': true}) }} {# see bootstrap_4_layout.html.twig #}
     </div>
   </fieldset>
   {{ form_errors(form.categories) }}
-  {{ form_widget(form.categories) }} {# see bootstrap_3_layout.html.twig #}
+  {{ form_widget(form.categories) }} {# see bootstrap_4_layout.html.twig #}
 </div>
 <div id="add-categories">
   <h2>
