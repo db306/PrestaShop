@@ -70,6 +70,13 @@ class AppKernel extends Kernel
             $_SERVER['CACHE_DRIVER'] = 'array';
         }
 
+        /* Will not work until PrestaShop is installed */
+        if ($this->parametersFileExists()) {
+            try {
+                $this->enableComposerAutoloaderOnModules($this->getActiveModules());
+            } catch (\Exception $e) {}
+        }
+
         return $bundles;
     }
 
@@ -191,5 +198,22 @@ class AppKernel extends Kernel
             'charset' => 'utf8',
             'driver' => 'pdo_mysql',
         ));
+    }
+
+    /**
+     * Enable auto loading of module Composer autoloader if needed.
+     * Need to be done as earlier as possible in application lifecycle.
+     *
+     * @param array $modules the list of modules
+     */
+    private function enableComposerAutoloaderOnModules($modules)
+    {
+        foreach ($modules as $module) {
+            $autoloader = __DIR__.'/../modules/'.$module.'/vendor/autoload.php';
+
+            if (file_exists($autoloader)) {
+                include_once $autoloader;
+            }
+        }
     }
 }
