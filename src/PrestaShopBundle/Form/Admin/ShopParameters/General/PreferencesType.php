@@ -143,6 +143,7 @@ class PreferencesType extends CommonAbstractType
                 'choice_translation_domain' => 'Admin.Global',
             ))
             ->add('shop_activity', ChoiceType::class, array(
+                'required' => false,
                 'choices_as_values' => true,
                 'placeholder' => '-- Please choose your main activity --',
                 'choices'  => array(
