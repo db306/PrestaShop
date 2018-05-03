@@ -687,6 +687,18 @@ class ProductPresenter
         if (isset($presentedProduct['features'])) {
             $presentedProduct = $this->addFeaturesToDisplay($presentedProduct);
         }
+        
+        //microdata availability
+        $presentedProduct['seo_availability'] = 'https://schema.org/';
+        if($product['quantity'] > 0){
+            $presentedProduct['seo_availability'] .= 'InStock';
+        }
+        elseif ($product['quantity'] <= 0 && $product['allow_oosp']){
+            $presentedProduct['seo_availability'] .= 'PreOrder';
+        }
+        else{
+            $presentedProduct['seo_availability'] .= 'OutOfStock';
+        }
 
         return $presentedProduct;
     }
