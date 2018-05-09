@@ -98,6 +98,10 @@ class CartControllerCore extends FrontController
             Tools::redirect('index.php');
         }
 
+        if (!Tools::getValue('multi-shipping')) {
+            $this->context->cart->setNoMultishipping();
+        }
+
         $presenter = new CartPresenter();
         $presented_cart = $presenter->present($this->context->cart, $shouldSeparateGifts = true);
 
