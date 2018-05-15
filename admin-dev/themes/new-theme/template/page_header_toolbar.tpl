@@ -84,7 +84,7 @@
       {/if}
     </div>
   {/block}
-  {if isset($headerTabContent)}
+  {if isset($headerTabContent) and $headerTabContent}
       <div class="page-head-tabs" id="head_tabs">
       {foreach $headerTabContent as $tabContent}
           {{$tabContent}}
