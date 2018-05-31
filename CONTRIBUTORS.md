@@ -341,6 +341,7 @@ GitHub contributors:
 - melvin
 - Michael Dekker
 - Michael Hjulskov
+- Michael Käfer
 - Michael Salihi
 - Michal Spaček
 - Michel ANTOINE
