@@ -41,6 +41,9 @@ use Db;
  */
 class PagePreference implements AdminPagePreferenceInterface
 {
+    /**
+     * @var SessionInterface
+     */
     private $session;
 
     public function __construct(SessionInterface $session)
@@ -53,8 +56,8 @@ class PagePreference implements AdminPagePreferenceInterface
         }
     }
 
-    /* (non-PHPdoc)
-     * @see \PrestaShopCoreAdminBundle\TransitionalBehavior\AdminPagePreferenceInterface::getTemporaryShouldUseLegacyPage()
+    /**
+     * {@inheritdoc}
      */
     public function getTemporaryShouldUseLegacyPage($page)
     {
@@ -65,8 +68,8 @@ class PagePreference implements AdminPagePreferenceInterface
         return ($this->session->has('should_use_legacy_page_for_'.$page) && $this->session->get('should_use_legacy_page_for_'.$page, 0) == 1);
     }
 
-    /* (non-PHPdoc)
-     * @see \PrestaShopCoreAdminBundle\TransitionalBehavior\AdminPagePreferenceInterface::setTemporaryShouldUseLegacyPage()
+    /**
+     * {@inheritdoc}
      */
     public function setTemporaryShouldUseLegacyPage($page, $useLegacy)
     {
@@ -81,8 +84,8 @@ class PagePreference implements AdminPagePreferenceInterface
         }
     }
 
-    /* (non-PHPdoc)
-     * @see \PrestaShopCoreAdminBundle\TransitionalBehavior\AdminPagePreferenceInterface::getTemporaryShouldAllowUseLegacyPage()
+    /**
+     * {@inheritdoc}
      */
     public function getTemporaryShouldAllowUseLegacyPage($page = null)
     {
