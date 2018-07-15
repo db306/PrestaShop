@@ -34,6 +34,7 @@ use SpecificPriceRule;
 use Product;
 use ProductDownload;
 use AdminProductsController;
+use Symfony\Component\Translation\TranslatorInterface;
 use Tools;
 use StockAvailable;
 use Hook;
@@ -52,8 +53,19 @@ use Category;
  */
 class AdminProductWrapper
 {
+    /**
+     * @var array
+     */
     private $errors = array();
+
+    /**
+     * @var TranslatorInterface
+     */
     private $translator;
+
+    /**
+     * @var Context
+     */
     private $legacyContext;
 
     /**
