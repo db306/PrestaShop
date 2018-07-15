@@ -33,6 +33,8 @@ namespace PrestaShop\PrestaShop\Adapter\Requirement;
 class CheckMissingOrUpdatedFiles
 {
     /**
+     * @param string|null $dir
+     * @param string $path
      * @return array
      */
     public function getListOfUpdatedFiles($dir = null, $path = '')
