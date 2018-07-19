@@ -2204,7 +2204,6 @@
 	    value: function confirm() {
 	      var option = this.getSelectedOption();
 	      if (option) {
-          $('body#checkout #payment-confirmation .btn-primary').prop('disabled',true);
 	        (0, _jquery2['default'])('#pay-with-' + option + '-form form').submit();
 	      }
 	    }
