@@ -262,7 +262,7 @@ class ConfigurationMock extends Configuration
 {
     private $configurationData = array();
 
-    public function set($key, $value)
+    public function set($key, $value, array $options = [])
     {
         $this->configurationData[$key] = $value;
         return $this;
