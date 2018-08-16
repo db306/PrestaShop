@@ -122,7 +122,7 @@ class HookExtension extends \Twig_Extension
         // The call to the render of the hooks is encapsulated into a ob management to avoid any call of echo from the
         // modules.
         ob_start();
-        $hookRenders = $this->hookDispatcher->renderForParameters($hookName, $hookParameters)->getContent();
+        $hookRenders = $this->hookDispatcher->dispatchRenderingWithParameters($hookName, $hookParameters)->getContent();
         ob_clean();
 
         $render = [];
@@ -154,7 +154,7 @@ class HookExtension extends \Twig_Extension
         if ($hookName == '') {
             throw new \Exception('Hook name missing');
         }
-        $hookRenders = $this->hookDispatcher->renderForParameters($hookName, $hookParameters)->getContent();
+        $hookRenders = $this->hookDispatcher->dispatchRenderingWithParameters($hookName, $hookParameters)->getContent();
         return empty($hookRenders) ? '' : implode('<br class="hook-separator" />', $hookRenders);
     }
 
