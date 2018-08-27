@@ -1711,7 +1711,7 @@ abstract class ModuleCore implements ModuleInterface
             Tools::deleteFile(_PS_ROOT_DIR_.self::CACHE_FILE_TRUSTED_MODULES_LIST);
             Tools::deleteFile(_PS_ROOT_DIR_.self::CACHE_FILE_UNTRUSTED_MODULES_LIST);
 
-            return (int)Module::checkModuleFromAddonsApi($module_name);
+            return (int) Module::checkModuleFromAddonsApi($module_name);
         }
     }
 
