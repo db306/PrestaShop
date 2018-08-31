@@ -49,6 +49,7 @@ class AppKernel extends Kernel
             new PrestaShop\TranslationToolsBundle\TranslationToolsBundle(),
             // Api consumer
             new Csa\Bundle\GuzzleBundle\CsaGuzzleBundle(),
+            new League\Tactician\Bundle\TacticianBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
