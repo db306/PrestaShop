@@ -266,7 +266,7 @@ class ManufacturerCore extends ObjectModel
         $idLang = is_null($idLang) ? Context::getContext()->language->id : (int)$idLang;
 
         $manufacturersList = array();
-        $manufacturers = Manufacturer::getManufacturers($idLang, true);
+        $manufacturers = Manufacturer::getManufacturers(false, $idLang);
         if ($manufacturers && count($manufacturers)) {
             foreach ($manufacturers as $manufacturer) {
                 if ($format === 'sitemap') {
