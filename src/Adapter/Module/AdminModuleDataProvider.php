@@ -257,7 +257,7 @@ class AdminModuleDataProvider implements ModuleInterface
                         $urls['install'],
                         $urls['disable']
                     );
-                } elseif ($addon->attributes->getBoolean('is_configurable') && !empty($addon->attributes->get('warning'))) {
+                } elseif ($addon->attributes->getBoolean('is_configurable')) {
                     $url_active = 'configure';
                     unset(
                         $urls['enable'],
@@ -267,11 +267,9 @@ class AdminModuleDataProvider implements ModuleInterface
                     $url_active = 'disable';
                     unset(
                         $urls['install'],
-                        $urls['enable']
+                        $urls['enable'],
+                        $urls['configure']
                     );
-                    if (!$addon->attributes->getBoolean('is_configurable')) {
-                        unset($urls['configure']);
-                    }
                 }
 
                 if (!$addon->attributes->getBoolean('is_configurable')) {
