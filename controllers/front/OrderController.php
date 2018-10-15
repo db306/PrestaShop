@@ -244,6 +244,10 @@ class OrderControllerCore extends FrontController
             'cart' => $presentedCart,
         ]);
 
+        $this->context->smarty->assign([
+            'display_transaction_updated_info' => Tools::getIsset('updatedTransaction'),
+        ]);
+
         parent::initContent();
         $this->setTemplate('checkout/checkout');
     }
