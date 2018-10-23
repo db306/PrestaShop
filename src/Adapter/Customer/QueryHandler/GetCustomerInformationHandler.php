@@ -206,7 +206,7 @@ final class GetCustomerInformationHandler implements GetCustomerInformationHandl
 
             $customerOrderInformation = new CustomerOrderInformation(
                 (int) $order['id_order'],
-                $order['date_add'],
+                Tools::displayDate($order['date_add']),
                 $order['payment'],
                 $order['order_state'],
                 (int) $order['nb_products'],
