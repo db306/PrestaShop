@@ -64,7 +64,6 @@ class Database
         $language = new \Language(1);
         \Context::getContext()->language = $language;
         $install->installModules();
-        $install->installModulesAddons();
 
         DatabaseDump::create();
     }
