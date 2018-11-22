@@ -189,8 +189,7 @@ final class LanguageGridDefinitionFactory extends AbstractGridDefinitionFactory
                  ->setTypeOptions([
                      'required' => false,
                      'attr' => [
-                         'placeholder' =>
-                             $this->translator->trans('Search date format', [], 'Admin.International.Help'),
+                         'placeholder' => $this->translator->trans('Search date format', [], 'Admin.International.Help'),
                      ],
                  ])
                  ->setAssociatedColumn('date_format_lite')
@@ -199,8 +198,7 @@ final class LanguageGridDefinitionFactory extends AbstractGridDefinitionFactory
                  ->setTypeOptions([
                      'required' => false,
                      'attr' => [
-                         'placeholder' =>
-                             $this->translator->trans('Search date format', [], 'Admin.International.Help'),
+                         'placeholder' => $this->translator->trans('Search date format', [], 'Admin.International.Help'),
                      ],
                  ])
                  ->setAssociatedColumn('date_format_full')
